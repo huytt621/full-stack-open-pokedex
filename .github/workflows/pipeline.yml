@@ -25,7 +25,7 @@ jobs:
       - name: Test
         run: npm run test
   tag_release:
-    if: ${{ env.TAG_CONDITION == 'true' }}
+    if: ${{ TAG_CONDITION == 'true' }}
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
