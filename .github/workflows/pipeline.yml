@@ -25,11 +25,12 @@ jobs:
       - name: Test
         run: npm run test
   tag_release:
-    if: github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/main'
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
     steps:
       - name: Bump version and push tag
+      - uses: actions/checkout@v4
         uses: anothrNick/github-tag-action@1.64.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
